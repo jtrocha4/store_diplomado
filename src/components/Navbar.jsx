@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Navbar () {
+const Navbar = () => {
   return (
     <nav className='bg-white grid grid-cols-3 py-4 px-4 border-b-2'>
       <div className='flex justify-start'>
