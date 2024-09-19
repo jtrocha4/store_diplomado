@@ -1,0 +1,14 @@
+import { createContext, useState } from 'react'
+
+export const DiscountContext = createContext()
+
+export const DiscountProvider = () => {
+  const [discount, setDiscount] = useState(0)
+  return (
+    <DiscountContext.Provider value={{
+      discount,
+      setDiscount
+    }}
+    />
+  )
+}
