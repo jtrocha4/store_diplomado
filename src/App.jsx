@@ -27,7 +27,7 @@ function App () {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/products' element={<Products products={products} />} />
-            <Route path='/get-your-discount' element={<GetYourDiscount products={products} />} />
+            <Route path='/get-your-discount' element={<GetYourDiscount />} />
           </Routes>
         </section>
       </Router>
