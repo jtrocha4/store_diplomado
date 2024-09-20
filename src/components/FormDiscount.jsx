@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { DiscountContext } from '../context/discount'
 
 const FormDiscount = () => {
   const [form, setForm] = useState({
@@ -8,6 +9,8 @@ const FormDiscount = () => {
   })
 
   const [emptyForm, setEmptyForm] = useState(false)
+  const [gotDiscount, setGotDiscount] = useState(false)
+  const { setDiscount } = useContext(DiscountContext)
 
   const handleChange = (event) => {
     setForm({
@@ -20,6 +23,14 @@ const FormDiscount = () => {
     event.preventDefault()
     if (!form.name.trim() || !form.email.trim() || !form.city.trim()) {
       setEmptyForm(true)
+    } else {
+      setDiscount(0.15)
+      setForm({
+        name: '',
+        email: '',
+        city: ''
+      })
+      setGotDiscount(true)
     }
   }
 
@@ -37,6 +48,14 @@ const FormDiscount = () => {
           </span>
         </div>
       )}
+      {
+        gotDiscount && (
+          <div class='bg-green-100 border-l-4 border-green-500 text-green-700 p-4' role='alert'>
+            <p class='font-bold'>¡Felicidades! Has obtenido tu 15% de descuento</p>
+            <p>Gracias por registrarte en Store. Como agradecimiento, te hemos otorgado un 15% de descuento en tu próxima compra.</p>
+          </div>
+        )
+      }
       <form action='' onSubmit={handleSubmit} className='my-4'>
         <div className='mb-4'>
           <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='name'>
